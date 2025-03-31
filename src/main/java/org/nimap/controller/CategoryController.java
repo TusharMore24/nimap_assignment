@@ -50,9 +50,13 @@ public class CategoryController {
     }
     
     @DeleteMapping("{category_id}")
-	public ResponseEntity<Void> deleteCategoryById(@PathVariable("category_id") Integer category_id) {
+	public String deleteCategoryById(@PathVariable("category_id") Integer category_id) {
 
-		categorySer.deleteCategeryById(category_id);
-		return ResponseEntity.noContent().build();
+		String deleteCategeryById = categorySer.deleteCategeryById(category_id);
+		if(deleteCategeryById!=null) {
+			return"Categoey Is Delete...";
+		}else {
+			return"Not Delete...";
+		}
 	}
 }

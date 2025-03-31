@@ -37,11 +37,6 @@ public class ProductController {
 	  return ResponseEntity.ok(createProduct);
   }
 		
-//		@GetMapping("/{product_id}")
-//		public  ResponseEntity<Product> getProductById(@PathVariable("product_id") Integer product_id){
-//			 Product product=productSer.getProductById(product_id);
-//			return ResponseEntity.ok(product);
-//		}
 		
 		@GetMapping("/{product_id}")
 		public  ResponseEntity<ProductDTO> getProductById(@PathVariable("product_id") Integer product_id){
@@ -66,9 +61,14 @@ public class ProductController {
 		}
 		
 		@DeleteMapping("/{product_id}")
-		public ResponseEntity<Void> deleteProductById(@PathVariable("product_id") Integer product_id){
-			productSer.deleteProduct(product_id);
-			return ResponseEntity.noContent().build();
+		public String deleteProductById(@PathVariable("product_id") Integer product_id){
+			String deleteProduct = productSer.deleteProduct(product_id);
+			if(deleteProduct!=null) {
+				return"Product Detete...";
+			}else {
+				return"Not Detete...";
+			}
+			
 		}
 		
 		

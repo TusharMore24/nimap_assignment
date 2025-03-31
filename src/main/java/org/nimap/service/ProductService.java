@@ -42,7 +42,8 @@ public class ProductService {
 		return productRepo.save(product);
 	}
 	
-	public void deleteProduct(Integer product_id) {
+	public String deleteProduct(Integer product_id) {
 		productRepo.deleteById(product_id);
+		return "";
 	}
 }
